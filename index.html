@@ -2,7 +2,6 @@
 <html lang="en" >
 <head>
 
-
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FGX2BTWEBD"></script>
 <script>
@@ -13,16 +12,148 @@
   gtag('config', 'G-FGX2BTWEBD');
 </script>
 
-
   <meta charset="UTF-8">
-  <title>Keyboard Kit For Learners</title>
+  <title>Speaking Keyboard For People With Disabilities</title>
   <link rel="stylesheet" href="./style.css">
 
 </head>
 
 <body>
+  
+<script src="https://code.responsivevoice.org/responsivevoice.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery/2.2.1/jquery.min.js"></script>
+  
+<h1>Speaking Keyboard</h1>
+  
+<style type="text/css">
+    
+textarea.form-control {
+  height: 200px;
+}	
 
-<h1>HTML + CSS Keyboard</h1>
+textarea.form-control {
+  height: 40px;
+  width: 50%;
+  padding: 4px 12px;
+  font-size: 18px;
+  border-radius: 25px;
+  border: solid 2px #2c70a2;
+  background-color: khaki;
+  // background: url('https://i.imgur.com/XYb2rMG.jpg') no-repeat bottom right;
+  // background-size: 84px 84px;
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: .1px;
+  -webkit-appearance: none;
+  outline: 0;
+  color: blue;
+  transition: all 250ms ease;
+}
+
+textarea.form-control {
+  height: 400px;
+  resize: none;
+  font-family: Lato,Arial,sans-serif,serif;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: blue;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: blue;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: blue;
+}
+
+textarea.form-control {
+  overflow: auto;
+}
+
+.samerow {
+display: flex;  
+justify-content: center;  
+}  
+  
+.samerow img {
+    // float: right;
+    // width: 100px;
+    // height: 120px;
+    margin: 10px;
+    vertical-align:top;
+    cursor: pointer;
+}
+
+.samerow textarea {
+    width: 50%; // adjust this value as you need
+  // margin-left: 80% !important;
+}
+
+</style>
+  
+<div class="samerow">
+
+<textarea placeholder="Type Your Characters Here & Also Listen To Them At The Same Time. Occassionally, Press the esc key to listen to the entire content fully...." class="form-control " id="text" rows="12" cols="60"></textarea>
+
+<img title="Listen" src="https://i.imgur.com/XYb2rMG.jpg" style="width: 84px;height: 84px;" onclick="responsiveVoice.speak($('#text').val(),$('#voiceselection').val(), parameters);">
+
+</div>
+  
+<br>  
+    
+        <script>
+            //Populate voice selection dropdown
+            var voicelist = responsiveVoice.getVoices();
+            var vselect = $("#voiceselection");
+            $.each(voicelist, function() {
+                vselect.append($("<option ></option>").val(this.name).text(this.name));
+            });
+        </script>
+        
+
+<script>
+
+    function voiceStartCallback() {
+        console.log("Voice started");
+    }
+    
+    function voiceEndCallback() {
+        console.log("Voice ended");
+    }
+    
+    var parameters = {
+        onstart: voiceStartCallback,
+        onend: voiceEndCallback,
+        rate: 0.95
+    }
+    
+</script>
+
+    </div>
+
+
+<script type="text/javascript">
+
+/*
+
+responsiveVoice.speak("Hello, this is a test using callbacks","UK English Female", parameters);
+
+responsiveVoice.speak("hello world", "UK English Male", {pitch: 2});
+
+responsiveVoice.speak("hello world", "UK English Male", {rate: 1.5});
+
+responsiveVoice.speak("hello world", "UK English Male", {volume: 1});
+
+*/
+
+</script>    
+  
+  
 <div class="keyboard">
   <div class="keyboard__row keyboard__row--h1">
     <div data-key="27" class="key--word">
@@ -381,6 +512,15 @@
     key.classList.add('playing');
     audio.currentTime = 0;
     audio.play();
+    
+    // console.log(e.keyCode);
+    
+    if (e.keyCode === 27) {
+      
+      setTimeout(function() {
+      responsiveVoice.speak($('#text').val(),'UK English Female', parameters);
+}, 1800);      
+                             };                              
   }
 
   const keys = Array.from(document.querySelectorAll('.key'));
@@ -388,8 +528,22 @@
   window.addEventListener('keydown', playSound);
 </script>
 
+<style>
+footer h4 {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   padding: 10px;
+   background-color: indigo;
+   color: white;
+   text-align: center;
+}
+</style>
 
-<script  src="./script.js"></script>
+<footer><center><a href="https://responsivevoice.org" title="ResponsiveVoice"><h4>Powered By ResponsiveVoice Text-To-Speech For Non-commercial personal or non-profit project</h4></a></center></footer>
+      
+  <script  src="./script.js"></script>
 
 </body>
 </html>

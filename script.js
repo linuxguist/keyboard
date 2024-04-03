@@ -66,3 +66,7 @@ function getKey (e) {
             size();
         });
         size();
+
+//load page with cursor in input field (focus)
+$(document).ready(function(){    document.getElementById("text").focus();
+});
