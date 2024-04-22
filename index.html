@@ -517,8 +517,9 @@ responsiveVoice.speak("hello world", "UK English Male", {volume: 1});
         document.getElementById('9').play();
         return false;
     }
-  
 
+    event.preventDefault();
+  
     // console.log(${e.keyCode});
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
     const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
