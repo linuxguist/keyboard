@@ -518,12 +518,23 @@ responsiveVoice.speak("hello world", "UK English Male", {volume: 1});
         return false;
     }
 
-    event.preventDefault();
+// note the three equal signs so that null won't be equal to undefined
+/*    
+if( aa["goodbye"] === undefined ) {
+    // do something
+       event.preventDefault();
+}
+*/
+
+    
   
     // console.log(${e.keyCode});
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
     const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-    if (!audio) return;
+    if (!audio) { 
+      event.preventDefault();
+      return;
+    }  
 
     key.classList.add('playing');
     audio.currentTime = 0;
