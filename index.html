@@ -96,6 +96,29 @@ justify-content: center;
 }
 
 </style>
+
+<style>
+.speaker {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #04AA6D;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.speaker:hover {background-color: #3e8e41}
+
+.speaker:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+</style>
   
 <div class="samerow">
 
@@ -108,7 +131,7 @@ This Application works well on the Firefox Web Browser.
 So, please use it for better performance.
 " class="form-control " id="text" rows="12" cols="60" autofocus></textarea>
 
-<img title="Listen" src="https://i.imgur.com/XYb2rMG.jpg" style="width: 84px;height: 84px;" onclick="responsiveVoice.speak($('#text').val(),$('#voiceselection').val(), parameters);">
+<img class="speaker" title="Listen" src="https://i.imgur.com/XYb2rMG.jpg" style="width: 84px;height: 84px;" onclick="responsiveVoice.speak($('#text').val(),$('#voiceselection').val(), parameters);">
 
 </div>
   
